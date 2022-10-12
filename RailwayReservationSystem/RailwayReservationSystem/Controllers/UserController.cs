@@ -3,7 +3,7 @@ using Microsoft.Extensions.Configuration;
 using RailwayReservationSystem.Data;
 using RailwayReservationSystem.Data.Repository;
 using RailwayReservationSystem.Models;
-
+using System;
 using System.Threading.Tasks;
 
 namespace RailwayReservationSystem.Controllers
@@ -50,6 +50,12 @@ namespace RailwayReservationSystem.Controllers
         {
             if (ModelState.IsValid)
             {
+                var date = reg.Dob;
+                
+                if (date.AddYears(18) > DateTime.Now.Date)
+                {
+                    return BadRequest(new { msg = "You need to be more than 18 years Old" });
+                }
                 if (_repo.CheckEmail(reg))
                 {
                     User user = _repo.AddUser(reg);

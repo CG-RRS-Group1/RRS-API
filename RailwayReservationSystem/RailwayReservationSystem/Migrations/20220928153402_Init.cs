@@ -22,7 +22,7 @@ namespace RailwayReservationSystem.Migrations
                     TotalSeat = table.Column<int>(type: "int", nullable: false),
                     AvailableGeneralSeat = table.Column<int>(type: "int", nullable: false),
                     AvailableLadiesSeat = table.Column<int>(type: "int", nullable: false),
-                    SeatFare = table.Column<decimal>(type: "decimal(5,2)", nullable: false)
+                    SeatFare = table.Column<decimal>(type: "decimal(10,2)", nullable: false)
                 },
                 constraints: table =>
                 {

@@ -27,7 +27,7 @@ namespace RailwayReservationSystem.Data.Repository
                 var message = new MimeMessage();
                 message.From.Add(MailboxAddress.Parse(_config["MailConfig:Sender"]));
                 message.To.Add(MailboxAddress.Parse(mail.To));
-                message.Subject = "Railway Reservation System - " + mail.Subject;
+                message.Subject = "PRTC - " + mail.Subject;
 
                 BodyBuilder body = new BodyBuilder();
                 if (cancelled)
