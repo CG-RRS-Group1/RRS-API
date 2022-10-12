@@ -215,7 +215,7 @@ namespace RailwayReservationSystem.Data.Repository
 
 
             //Reservation Only can be cancelled if the Train date is not the same day or past.
-            if (DateTime.Now.Date >= train.SourceDepartureTime.Date)
+            if (DateTime.Now >= train.SourceDepartureTime)
             {
                 return null;
             }
