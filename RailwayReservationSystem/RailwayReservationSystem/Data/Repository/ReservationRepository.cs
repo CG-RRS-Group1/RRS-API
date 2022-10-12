@@ -44,7 +44,7 @@ namespace RailwayReservationSystem.Data.Repository
                     //If Train Object is null
                     //Or
                     //Train Date is already gone then return NULL
-                    if (train == null || DateTime.Now.Date >= train.SourceDepartureTime.Date) return null;
+                    if (train == null || DateTime.Now >= train.SourceDepartureTime) return null;
                     
                     int totalFare = (int)(passengers.Count * train.SeatFare);
 

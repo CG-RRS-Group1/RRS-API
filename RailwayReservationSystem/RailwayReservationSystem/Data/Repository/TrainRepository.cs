@@ -126,13 +126,19 @@ namespace RailwayReservationSystem.Data.Repository
         public List<Train> GetAllTrains()
         {
             
-            return _context.Trains.ToList();
-            
+            return _context.Trains.Where(tr => tr.SourceDepartureTime >= DateTime.Now).OrderBy(tr => tr.SourceDepartureTime).ToList();
         }
 
         public Train GetTrain(int id)
         {
-            return _context.Trains.Find(id);
+            try
+            {
+                return _context.Trains.FirstOrDefault(tr => tr.TrainId == id && tr.SourceDepartureTime >= DateTime.Now);
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         public bool CheckAvailability(int trainId, string quota, int passCount)
